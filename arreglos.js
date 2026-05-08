@@ -31,7 +31,7 @@ function pintarArregloIzquierdo() {
             </td>
 
             <td>
-                <button onclick="moverDerecha(${i})" class="btn-mover">
+                <button onclick="moverHaciaDerecha(${i})" class="btn-mover">
                     ➜
                 </button>
             </td>
@@ -64,7 +64,7 @@ function pintarArregloDerecho() {
             </td>
 
             <td>
-                <button onclick="moverIzquierda(${i})" class="btn-mover">
+                <button onclick="moverHaciaIzquierda(${i})" class="btn-mover">
                     ⬅
                 </button>
             </td>
@@ -72,4 +72,28 @@ function pintarArregloDerecho() {
         `;
     }
     tablaDerecha.innerHTML = contenidoDerecha;
+}
+
+function eliminarDerecho(indice) {
+    //Debug para eliminar 
+    //console.log("Eliminando elemento en índice: " + indice);
+    //console.log( arregloDerecho);
+    arregloDerecho.splice(indice, 1);
+    pintarArregloDerecho();
+}
+
+function moverHaciaDerecha(indice) {
+    let edad = arregloIzquierdo[indice];
+    arregloDerecho.push(edad);
+    eliminarIzquierdo(indice);
+    pintarArregloDerecho();
+    pintarArregloIzquierdo();
+}
+
+function moverHaciaIzquierda(indice) {
+    let edad = arregloDerecho[indice];
+    arregloIzquierdo.push(edad);
+    eliminarDerecho(indice);
+    pintarArregloIzquierdo();
+    pintarArregloDerecho();
 }
